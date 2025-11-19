@@ -146,13 +146,12 @@ CREATE TABLE TBL_PEDIDO (
     id_restaurante BIGINT NOT NULL,
     FOREIGN KEY (id_restaurante) REFERENCES Restaurante(id_restaurante),
     CONSTRAINT CK_Pedido_Status CHECK (
-        TP_STATUS IN ('REALIZADO','PAGO','CONFIRMADO','PRONTO','SAIU_PARA_ENTREGA','ENTREGUE')
-    )
+    TP_STATUS IN ('REALIZADO','PAGO','CONFIRMADO','PRONTO','SAIU_PARA_ENTREGA','ENTREGUE'),
 );
 
 CREATE TABLE TBL_ITEM_PEDIDO (
     ID_ITEM_PEDIDO bigint primary key identity,
-    NR_QUANTIDADE int not null, 
+    NR_QUANTIDADE int not null,
     TP_OBSERVACAO text,
 	ID_PEDIDO bigint not null,
 	ID_ITEM_CARDAPIO bigint not null,
@@ -163,7 +162,7 @@ CREATE TABLE TBL_ITEM_PEDIDO (
 
 CREATE TABLE TBL_AVALIACAO (
     ID_AVALIACAO bigint primary key identity,
-    NR_NOTA int not null, 
+    NR_NOTA int not null,
     TP_COMENTARIO text,
 	ID_PEDIDO BIGINT not null,
 	foreign key (ID_PEDIDO) references TBL_PEDIDO(ID_PEDIDO)
